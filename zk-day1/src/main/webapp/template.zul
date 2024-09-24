@@ -1,0 +1,53 @@
+<zk>
+    <window border="normal" width="1470px" height="820px"
+            style="background-color: #f9f9f9; padding: 20px;"
+            mode="overlapped">
+        <!-- Border Layout Template -->
+        <borderlayout width="100%" height="100%">
+            <!-- North Region (Header) -->
+            <north size="60px" style="background-color: #4CAF50; color: white; padding: 10px;">
+                <hbox>
+                    <label value="Application Dashboard"
+                           style="font-size: 24px; font-weight: bold; text-align: center;" />
+                </hbox>
+            </north>
+
+            <!-- South Region (Footer) -->
+            <south size="50px" style="background-color: #f1f1f1; text-align: center; padding: 10px;">
+                <label value="HEHEHEHEHEHEHEHEHE" />
+            </south>
+
+            <!-- West Region (Menu) -->
+            <west size="200px" collapsible="true" splittable="true"
+                  style="background-color: #f1f1f1; text-align: center; padding: 10px;">
+                <vbox>
+                    <label value="Menu" style="font-weight: bold;" />
+                    <button label="Welcome" onClick='loadContent("welcomepage.zul")' />
+                    <button label="Registration Form" onClick='loadContent("registrationform.zul")' />
+                    <button label="Table" onClick='loadContent("data.zul")' />
+                    <button label="Search" onClick='loadContent("playerSearch.zul")'/>
+                    <button label="Term Of Use" onClick='loadContent("term.zul")' />
+                    <button label="Help" onClick='loadContent("help.zul")' />
+                </vbox>
+            </west>
+
+            <!-- Center Region (Dynamic content will be loaded here) -->
+            <center border="none" autoscroll="true" self="@insert(content)">
+            </center>
+
+            <!-- East Region (Optional) -->
+            <east size="200px" collapsible="true"
+                  style="background-color: #f1f1f1; text-align: center; padding: 10px;">
+<!--                <label value="Side Panel" />-->
+            </east>
+        </borderlayout>
+
+
+        <zscript><![CDATA[
+            void loadContent(String zulFile) {
+                Executions.sendRedirect(zulFile);
+            }
+        ]]></zscript>
+    </window>
+</zk>
+

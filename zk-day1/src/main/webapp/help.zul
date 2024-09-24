@@ -1,0 +1,45 @@
+<zk>
+    <window border="normal" width="600px" height="600px"
+            style="background-color: #f9f9f9; padding: 20px;"
+            position="center" mode="overlapped" title="FAQ - Frequently Asked Questions">
+
+        <vlayout spacing="10px">
+
+            <label value="Frequently Asked Questions"
+                   style="font-size: 24px; font-weight: bold; text-align: center;" />
+
+            <!-- FAQ Item 1 -->
+            <groupbox>
+                <caption>
+                    <button label="What is this application about?" onClick="faq1Label.setVisible(!faq1Label.isVisible())" />
+                </caption>
+                <label id="faq1Label" value="This application is a user management and dashboard system designed for easy navigation and use." visible="false" />
+            </groupbox>
+
+            <!-- FAQ Item 2 -->
+            <groupbox>
+                <caption>
+                    <button label="How do I register an account?" onClick="faq2Label.setVisible(!faq2Label.isVisible())" />
+                </caption>
+                <label id="faq2Label" value="Click on the 'Registration Form' button from the menu, fill in your details, and submit the form to register." visible="false" />
+            </groupbox>
+
+            <!-- FAQ Item 3 -->
+            <groupbox>
+                <caption>
+                    <button label="Can I update my information later?" onClick="faq3Label.setVisible(!faq3Label.isVisible())" />
+                </caption>
+                <label id="faq3Label" value="Yes, you can update your profile information by navigating to the 'Profile' section and editing the necessary fields." visible="false" />
+            </groupbox>
+
+            <!-- FAQ Item 4 -->
+            <groupbox>
+                <caption>
+                    <button label="Who can I contact for support?" onClick="faq4Label.setVisible(!faq4Label.isVisible())" />
+                </caption>
+                <label id="faq4Label" value="You can contact our support team by navigating to the 'Contact Us' section in the menu." visible="false" />
+            </groupbox>
+
+        </vlayout>
+    </window>
+</zk>

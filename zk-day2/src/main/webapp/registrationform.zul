@@ -1,0 +1,414 @@
+<!--<zk>-->
+<!--    <window title="Registration Form" border="normal" width="400px">-->
+<!--        <vbox spacing="10px" style="padding: 20px;">-->
+<!--            <hbox>-->
+<!--                <label value="Name:" width="100px" />-->
+<!--                <textbox id="nameInput" placeholder="Please Enter Your Name"-->
+<!--                          />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Gender:" width="100px" />-->
+<!--                <radiogroup id="genderGroup" >-->
+<!--                    <radio label="Male" value="Male" />-->
+<!--                    <radio label="Female" value="Female" />-->
+<!--                </radiogroup>-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Date of Birth:" width="100px" />-->
+<!--                <datebox id="dobInput"  />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Address:" width="100px" />-->
+<!--                <textbox id="addressInput" placeholder="Please Enter Your Address"-->
+<!--                          />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <checkbox id="agreeCheckbox" label="I agree to the terms and conditions"-->
+<!--                           />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <button type="submit" id="submitButton"-->
+<!--                        label="Submit" onChange="checkForm()"-->
+<!--                        href="data.zul" disabled="false"/>-->
+<!--            </hbox>-->
+<!--        </vbox>-->
+<!--        <zscript><![CDATA[-->
+<!--            void checkForm() {-->
+<!--                boolean isFormComplete =-->
+<!--                    nameInput.getValue() != null && !nameInput.getValue().isEmpty() &&-->
+<!--                    (genderGroup.getSelectedItem() != null) &&-->
+<!--                    dobInput.getValue() != null &&-->
+<!--                    addressInput.getValue() != null && !addressInput.getValue().isEmpty() &&-->
+<!--                    agreeCheckbox.isChecked();-->
+
+<!--                submitButton.setDisabled(!isFormComplete);-->
+<!--            }-->
+<!--        ]]></zscript>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<!--<zk>-->
+<!--    <window title="Registration Form" border="normal" width="400px">-->
+<!--        <vbox spacing="10px" style="padding: 20px;">-->
+<!--            <hbox>-->
+<!--                <label value="Name:" width="100px" />-->
+<!--                <textbox id="nameInput" placeholder="Please Enter Your Name"-->
+<!--                         onChange="checkForm()" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Gender:" width="100px" />-->
+<!--                <radiogroup id="genderGroup" onChange="checkForm()">-->
+<!--                    <radio label="Male" value="Male" />-->
+<!--                    <radio label="Female" value="Female" />-->
+<!--                </radiogroup>-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Date of Birth:" width="100px" />-->
+<!--                <datebox id="dobInput" onChange="checkForm()" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Address:" width="100px" />-->
+<!--                <textbox id="addressInput" placeholder="Please Enter Your Address"-->
+<!--                         onChange="checkForm()" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <checkbox id="agreeCheckbox" label="I agree to the terms and conditions"-->
+<!--                          onChange="checkForm()" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <button id="submitButton" label="Submit"-->
+<!--                        onClick="submitForm()"-->
+<!--                        disabled="true" />-->
+<!--            </hbox>-->
+<!--        </vbox>-->
+
+<!--        <zscript><![CDATA[-->
+<!--            void checkForm() {-->
+<!--                boolean isFormComplete =-->
+<!--                    nameInput.getValue() != null && !nameInput.getValue().trim().isEmpty() &&-->
+<!--                    (genderGroup.getSelectedItem() != null) &&-->
+<!--                    dobInput.getValue() != null &&-->
+<!--                    addressInput.getValue() != null && !addressInput.getValue().trim().isEmpty() &&-->
+<!--                    agreeCheckbox.isChecked();-->
+
+<!--                submitButton.setDisabled(!isFormComplete);-->
+<!--            }-->
+
+<!--            void submitForm() {-->
+<!--                // Redirect to data.zul or handle the submission logic-->
+<!--                String name = nameInput.getValue();-->
+<!--                String gender = genderGroup.getSelectedItem() != null ? genderGroup.getSelectedItem().getValue() : "";-->
+<!--                Date dob = dobInput.getValue();-->
+<!--                String address = addressInput.getValue();-->
+
+<!--                // Redirect with parameters-->
+<!--                Executions.sendRedirect("data.zul?name=" + name + "&gender=" + gender + "&dob=" + dob + "&address=" + address);-->
+<!--            }-->
+<!--        ]]></zscript>-->
+<!--    </window>-->
+<!--</zk>-->
+
+
+<!--<zk>-->
+<!--    <window title="Registration Form" border="normal"-->
+<!--            width="400px" style="background-color: #f9f9f9; padding: 20px;"-->
+<!--            position="center" mode="overlapped">-->
+<!--        <vbox spacing="10px" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">-->
+<!--            <hbox>-->
+<!--                <label value="Name:" width="100px" style="font-weight: bold;" />-->
+<!--                <textbox id="nameInput" placeholder="Please Enter Your Name"-->
+<!--                         onChange="checkForm()" constraint="no empty"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Gender:" width="100px" style="font-weight: bold;" />-->
+<!--                <radiogroup id="genderGroup" onChange="checkForm()">-->
+<!--                    <radio label="Male" value="Male" />-->
+<!--                    <radio label="Female" value="Female" />-->
+<!--                </radiogroup>-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Date of Birth:" width="100px" style="font-weight: bold;" />-->
+<!--                <datebox id="dobInput"-->
+<!--                         onChange="checkForm()"-->
+<!--                         constraint="no empty, no future, no today"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Upload File:" width="100px" style="font-weight: bold;" />-->
+<!--                <fileupload id="fileUpload" onChange="checkForm()" label="upload file"/>-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Address:" width="100px" style="font-weight: bold;" />-->
+<!--                <textbox id="addressInput" placeholder="Please Enter Your Address"-->
+<!--                         onChange="checkForm()" constraint="no empty"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Country:" width="100px" style="font-weight: bold;" />-->
+<!--                <combobox id="countryInput" onChange="checkForm()" width="100%">-->
+<!--                    <comboitem label="Timor Leste" value="Timor Leste"/>-->
+<!--                    <comboitem label="Papua Nugini" value="Papua Nugini"/>-->
+<!--                    <comboitem label="India" value="India"/>-->
+<!--                    <comboitem label="Myanmar" value="Myanmar"/>-->
+<!--                </combobox>-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <checkbox id="agreeCheckbox" onChange="checkForm()"-->
+<!--                          label="I agree to the terms and conditions"/>-->
+<!--&lt;!&ndash;                <label value="I agree to the terms and conditions (check detail)"&ndash;&gt;-->
+<!--&lt;!&ndash;                popup="termDetail, position=end_after"&ndash;&gt;-->
+<!--&lt;!&ndash;                style="cursor: pointer"&ndash;&gt;-->
+<!--&lt;!&ndash;                />&ndash;&gt;-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--&lt;!&ndash;                <label value="help"&ndash;&gt;-->
+<!--&lt;!&ndash;                       popup="helpPopup, position=end_after"&ndash;&gt;-->
+<!--&lt;!&ndash;                       style="cursor: pointer"/>&ndash;&gt;-->
+<!--                <button id="submitButton" label="Submit"-->
+<!--                        onClick="submitForm()"-->
+<!--                        disabled="false"-->
+<!--                        style="background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"-->
+<!--                />-->
+<!--                <button label="Reset" onClick="resetForm()"-->
+<!--                        style="background-color: #f44336; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"-->
+<!--                />-->
+<!--            </hbox>-->
+<!--        </vbox>-->
+
+<!--        <zscript>-->
+<!--            <![CDATA[-->
+<!--            void checkForm() {-->
+<!--                boolean isFormComplete =-->
+<!--                    nameInput.getValue() != null && !nameInput.getValue().trim().isEmpty() &&-->
+<!--                    (genderGroup.getSelectedItem() != null) &&-->
+<!--                    countryInput.getValue() != null && !countryInput.getValue().trim().isEmpty() &&-->
+<!--                    dobInput.getValue() != null &&-->
+<!--                    addressInput.getValue() != null && !addressInput.getValue().trim().isEmpty() &&-->
+<!--                    agreeCheckbox.isChecked();-->
+
+<!--                submitButton.setDisabled(!isFormComplete);-->
+<!--            }-->
+
+<!--            void submitForm() {-->
+<!--                String name = nameInput.getValue();-->
+<!--                String gender = genderGroup.getSelectedItem() != null ? genderGroup.getSelectedItem().getValue() : "";-->
+<!--                Date dob = dobInput.getValue();-->
+<!--                String country = countryInput.getValue();-->
+<!--                String address = addressInput.getValue();-->
+<!--                String fileName = "File";-->
+
+<!--                Executions.sendRedirect("data.zul?name=" + name + "&gender=" + gender +-->
+<!--                "&dob=" + dob + "&country=" + country +-->
+<!--                "&address=" + address + "&file=" + fileName);-->
+<!--            }-->
+
+<!--            void resetForm() {-->
+<!--                nameInput.setRawValue("");-->
+<!--                genderGroup.setSelectedItem(null);-->
+<!--                dobInput.setRawValue(null);-->
+<!--                countryInput.setValue("");-->
+<!--                addressInput.setRawValue("");-->
+<!--                agreeCheckbox.setChecked(false);-->
+<!--                checkForm(); // Re-evaluate the form to disable the submit button-->
+<!--            }-->
+
+<!--        ]]></zscript>-->
+<!--    </window>-->
+<!--</zk>-->
+
+
+<!--<zk>-->
+<!--    <window border="normal" width="800px" height="800px"-->
+<!--            style="background-color: #f9f9f9; padding: 20px;"-->
+<!--            position="center" mode="overlapped">-->
+<!--            &lt;!&ndash; Border Layout Definition &ndash;&gt;-->
+<!--        <borderlayout width="100%" height="100%">-->
+<!--            &lt;!&ndash; North Region (Header) &ndash;&gt;-->
+<!--            <north size="60px" style="background-color: #4CAF50; color: white; padding: 10px;">-->
+<!--                <hbox>-->
+<!--                    <label value="Registration Form"-->
+<!--                           style="font-size: 24px; font-weight: bold; text-align: center;" />-->
+<!--                </hbox>-->
+<!--            </north>-->
+
+<!--            &lt;!&ndash; South Region (Footer) &ndash;&gt;-->
+<!--            <south size="50px"-->
+<!--                   style="background-color: #f1f1f1; text-align: center; padding: 10px;">-->
+<!--                <label value="HEHEHEHEHEHEHEHEHEHE" />-->
+<!--            </south>-->
+
+<!--            &lt;!&ndash; Center Region (Form Content) &ndash;&gt;-->
+<!--            <center>-->
+<!--                <vbox spacing="10px" style="padding: 100px; border: 1px solid #ccc; border-radius: 5px;">-->
+<!--                    <hbox>-->
+<!--                        <label value="Name:" width="100px" style="font-weight: bold;" />-->
+<!--                        <textbox id="nameInput" placeholder="Please Enter Your Name"-->
+<!--                                 onChange="checkForm()" constraint="no empty"-->
+<!--                                 style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--                    </hbox>-->
+<!--                    <hbox>-->
+<!--                        <label value="Gender:" width="100px" style="font-weight: bold;" />-->
+<!--                        <radiogroup id="genderGroup" onChange="checkForm()">-->
+<!--                            <radio label="Male" value="Male" />-->
+<!--                            <radio label="Female" value="Female" />-->
+<!--                        </radiogroup>-->
+<!--                    </hbox>-->
+<!--                    <hbox>-->
+<!--                        <label value="Date of Birth:" width="100px" style="font-weight: bold;" />-->
+<!--                        <datebox id="dobInput"-->
+<!--                                 onChange="checkForm()"-->
+<!--                                 constraint="no empty, no future, no today"-->
+<!--                                 style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--                    </hbox>-->
+<!--                    <hbox>-->
+<!--                        <label value="Country:" width="100px" style="font-weight: bold;" />-->
+<!--                        <combobox id="countryInput" onChange="checkForm()" width="100%">-->
+<!--                            <comboitem label="Timor Leste" value="USA"/>-->
+<!--                            <comboitem label="Papua Nugini" value="Canada"/>-->
+<!--                            <comboitem label="India" value="UK"/>-->
+<!--                            <comboitem label="Myanmar" value="Australia"/>-->
+<!--                        </combobox>-->
+<!--                    </hbox>-->
+<!--                    <hbox>-->
+<!--                        <label value="Address:" width="100px" style="font-weight: bold;" />-->
+<!--                        <textbox id="addressInput" placeholder="Please Enter Your Address"-->
+<!--                                 onChange="checkForm()" constraint="no empty"-->
+<!--                                 style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--                    </hbox>-->
+<!--                    <hbox>-->
+<!--                        <label value="Upload File:" width="100px" style="font-weight: bold;" />-->
+<!--                        <fileupload id="fileUpload" onChange="checkForm()" label="upload file"/>-->
+<!--                    </hbox>-->
+<!--                    <hbox>-->
+<!--                        <checkbox id="agreeCheckbox" onChange="checkForm()" />-->
+<!--                        <label value="I agree to the terms and conditions (check detail)"-->
+<!--                               popup="termDetail, position=end_after"-->
+<!--                               style="cursor: pointer"-->
+<!--                        />-->
+<!--                    </hbox>-->
+
+<!--                    <hbox>-->
+<!--                        <button id="submitButton" label="Submit"-->
+<!--                                onClick="submitForm()"-->
+<!--                                disabled="true"-->
+<!--                                style="background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;" />-->
+<!--                        <button label="Reset" onClick="resetForm()"-->
+<!--                                style="background-color: #f44336; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;" />-->
+<!--                    </hbox>-->
+<!--                </vbox>-->
+<!--            </center>-->
+
+<!--            &lt;!&ndash; West Region (Empty for future use) &ndash;&gt;-->
+<!--            <west size="100px" collapsible="true"-->
+<!--                  style="background-color: #f1f1f1; text-align: center; padding: 10px;">-->
+<!--                <label value="help"-->
+<!--                       popup="helpPopup, position=end_after"-->
+<!--                       style="cursor: pointer"/>-->
+<!--            </west>-->
+
+<!--            &lt;!&ndash; East Region (Empty for future use) &ndash;&gt;-->
+<!--            <east size="100px" collapsible="true"-->
+<!--                  style="background-color: #f1f1f1; text-align: center; padding: 10px;">-->
+<!--                <button href="data.zul" >-->
+<!--                    Table-->
+<!--                </button>-->
+<!--            </east>-->
+<!--        </borderlayout>-->
+
+<!--        &lt;!&ndash; Popup for Terms and Conditions &ndash;&gt;-->
+<!--        <popup id="termDetail">-->
+<!--            <include src="term.zul"/>-->
+<!--        </popup>-->
+<!--        <popup id="helpPopup">-->
+<!--            <include src="help.zul" />-->
+<!--        </popup>-->
+
+<!--        <zscript>-->
+<!--            <![CDATA[-->
+<!--            void checkForm() {-->
+<!--                boolean isFormComplete =-->
+<!--                    nameInput.getValue() != null && !nameInput.getValue().trim().isEmpty() &&-->
+<!--                    (genderGroup.getSelectedItem() != null) &&-->
+<!--                    countryInput.getValue() != null && !countryInput.getValue().trim().isEmpty() &&-->
+<!--                    dobInput.getValue() != null &&-->
+<!--                    addressInput.getValue() != null && !addressInput.getValue().trim().isEmpty() &&-->
+<!--                    agreeCheckbox.isChecked();-->
+
+<!--                submitButton.setDisabled(!isFormComplete);-->
+<!--            }-->
+
+<!--            void submitForm() {-->
+<!--                String name = nameInput.getValue();-->
+<!--                String gender = genderGroup.getSelectedItem() != null ? genderGroup.getSelectedItem().getValue() : "";-->
+<!--                Date dob = dobInput.getValue();-->
+<!--                String country = countryInput.getValue();-->
+<!--                String address = addressInput.getValue();-->
+<!--                String fileName = "File";-->
+
+<!--                Executions.sendRedirect("data.zul?name=" + name + "&gender=" + gender +-->
+<!--                "&dob=" + dob + "&country=" + country +-->
+<!--                "&address=" + address + "&file=" + fileName);-->
+<!--            }-->
+<!--            void resetForm() {-->
+<!--                nameInput.setRawValue("");-->
+<!--                genderGroup.setSelectedItem(null);-->
+<!--                dobInput.setRawValue(null);-->
+<!--                countryInput.setValue("");-->
+<!--                addressInput.setRawValue("");-->
+<!--                agreeCheckbox.setChecked(false);-->
+<!--                checkForm(); // Re-evaluate the form to disable the submit button-->
+<!--            }-->
+<!--            ]]>-->
+<!--        </zscript>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+<zk>
+    <window title="Registration Form" border="normal"
+            width="400px" style="background-color: #f9f9f9; padding: 20px;"
+            position="center" mode="overlapped" apply="data.RegisFormController"
+            self="@define(content)">
+        <vbox spacing="10px" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+            <hbox>
+                <label value="Name:" width="100px" style="font-weight: bold;" />
+                <textbox id="nameInput" placeholder="Please Enter Your Name"
+                         constraint="no empty"
+                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+            </hbox>
+            <hbox>
+                <label value="Gender:" width="100px" style="font-weight: bold;" />
+                <textbox id="genderInput" placeholder="Please Enter Your Gender"
+                         constraint="no empty"
+                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+            </hbox>
+            <hbox>
+                <label value="Date of Birth:" width="100px" style="font-weight: bold;" />
+                <textbox id="birthdayInput" placeholder="Please Enter Your Birth Date"
+                         constraint="no empty"
+                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+            </hbox>
+            <hbox>
+                <label value="Country:" width="100px" style="font-weight: bold;" />
+
+                <textbox id="countryInput" placeholder="Please Enter Your Country"
+                         constraint="no empty"
+                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+            </hbox>
+            <hbox>
+                <checkbox id="agreeCheckbox" onChange="checkForm()"
+                          label="I agree to the terms and conditions"/>
+            </hbox>
+            <hbox>
+                <button id="submitButton" label="Submit"
+                        disabled="false"
+                        style="background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"
+                />
+                <button label="Reset" onClick="resetForm()"
+                        style="background-color: #f44336; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"
+                />
+            </hbox>
+        </vbox>
+    </window>
+</zk>

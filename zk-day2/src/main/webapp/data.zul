@@ -1,0 +1,115 @@
+<!--<zk>-->
+<!--    <window title="Registration Data" border="normal" width="790px" style="padding: 20px;">-->
+<!--        <grid id="grid" autopaging="true" style="border: 1px solid #ccc; background-color: #f9f9f9;">-->
+<!--            <columns>-->
+<!--                <column label="Name" style="font-weight: bold; text-align: left;" />-->
+<!--                <column label="Gender" style="font-weight: bold; text-align: left;" />-->
+<!--                <column label="Date of Birth" style="font-weight: bold; text-align: left;" />-->
+<!--                <column label="Address" style="font-weight: bold; text-align: left;" />-->
+<!--            </columns>-->
+<!--            <rows>-->
+<!--                <row style="background-color: #ffffff;">-->
+<!--                    <label value="Bram" style="padding: 5px;" />-->
+<!--                    <label value="Male" style="padding: 5px;" />-->
+<!--                    <label value="21 December 2000" style="padding: 5px;" />-->
+<!--                    <label value="Penatih" style="padding: 5px;" />-->
+<!--                </row>-->
+<!--                <row style="background-color: #ffffff;">-->
+<!--                    <label value="Darma" style="padding: 5px;" />-->
+<!--                    <label value="Male" style="padding: 5px;" />-->
+<!--                    <label value="21 December 2000" style="padding: 5px;" />-->
+<!--                    <label value="Penatih" style="padding: 5px;" />-->
+<!--                </row>-->
+<!--            </rows>-->
+<!--        </grid>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<!--<zk>-->
+<!--    <window title="Registration Data" border="normal" width="800px"-->
+<!--            style="background-color: #f9f9f9; padding: 20px;" position="center" mode="overlapped">-->
+<!--        <grid id="dataGrid" autopaging="true" style="border-collapse: collapse; width: 100%;">-->
+<!--            <columns>-->
+<!--                <column label="Name" width="200px" />-->
+<!--                <column label="Gender" width="100px" />-->
+<!--                <column label="Date of Birth" width="150px" />-->
+<!--                <column label="Country" width="250px"/>-->
+<!--                <column label="Address" width="200px" />-->
+<!--                <column label="File Name" width="100px" />-->
+<!--            </columns>-->
+<!--            <rows>-->
+<!--                <row style="border-bottom: 1px solid #ccc;">-->
+<!--                    <label value="${param.name}" style="padding: 10px;" />-->
+<!--                    <label value="${param.gender}" style="padding: 10px;" />-->
+<!--                    <label value="${param.dob}" style="padding: 10px;" />-->
+<!--                    <label value="${param.country}" style="padding: 10px;" />-->
+<!--                    <label value="${param.address}" style="padding: 10px;" />-->
+<!--                    <label value="File" style="padding: 10px" />-->
+<!--                </row>-->
+<!--            </rows>-->
+<!--        </grid>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<!--<zk>-->
+<!--    <window title="Registration Data" border="normal" width="600px">-->
+<!--        <grid id="dataGrid" autopaging="true">-->
+<!--            <columns>-->
+<!--                <column label="Name" />-->
+<!--                <column label="Gender" />-->
+<!--                <column label="Date of Birth" />-->
+<!--                <column label="Address" />-->
+<!--            </columns>-->
+<!--            <rows>-->
+<!--                <row>-->
+<!--                    <label value="${param.name}" />-->
+<!--                    <label value="${param.gender}" />-->
+<!--                    <label id="dobLabel" />-->
+<!--                    <label value="${param.address}" />-->
+<!--                </row>-->
+<!--            </rows>-->
+<!--        </grid>-->
+
+<!--        <script><![CDATA[-->
+<!--            // Function to format the date-->
+<!--            function formatDate(dob) {-->
+<!--                if (dob) {-->
+<!--                    const date = new Date(dob);-->
+<!--                    const options = { day: '2-digit', month: 'long', year: 'numeric' };-->
+<!--                    return date.toLocaleDateString('en-US', options);-->
+<!--                }-->
+<!--                return "Invalid Date";-->
+<!--            }-->
+
+<!--            // Set the formatted date to the label-->
+<!--            const dob = '${param.dob}';-->
+<!--            document.getElementById('dobLabel').innerText = formatDate(dob);-->
+<!--        ]]></script>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<zk>
+    <window border="normal" width="600px" height="400px" title="Registered Users" position="center">
+        <grid id="userTable" width="100%" height="100%">
+            <columns>
+                <column label="Name" />
+                <column label="Email" />
+                <column label="Gender" />
+                <column label="Date of Birth" />
+                <column label="Country" />
+                <column label="Uploaded File" />
+            </columns>
+            <rows>
+                <row forEach="@{registeredUsers}">
+                    <label value="@{each.name}" />
+                    <label value="@{each.email}" />
+                    <label value="@{each.gender}" />
+                    <label value="@{each.dob}" />
+                    <label value="@{each.country}" />
+                    <label value="@{each.uploadedFile}" />
+                </row>
+            </rows>
+        </grid>
+    </window>
+</zk>
+

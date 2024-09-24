@@ -1,0 +1,222 @@
+<!--<zk>-->
+<!--    <window title="Embedded Style" border="normal" width="200px">-->
+<!--        <hlayout>Hello World</hlayout>-->
+<!--    </window>-->
+<!--    <window title="Overlapped Style" mode="overlapped" border="normal"-->
+<!--            width="200px">-->
+<!--        <hlayout>Hello World 2</hlayout>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<!--<zk>-->
+<!--    <window id="win" closable="true" title="Hello" border="normal" width="200px"-->
+<!--            onClose="self.visible = false; event.stopPropagation();">-->
+<!--        <caption>-->
+<!--            <toolbarbutton label="Help"/>-->
+<!--        </caption>-->
+<!--        <checkbox label="Hello, Wolrd!"/>-->
+<!--    </window>-->
+
+<!--    <button label="Overlap" onClick="win.doOverlapped();"/>-->
+<!--    <button label="Popup" onClick="win.doPopup();"/>-->
+<!--    <button label="Modal" onClick="win.doModal();"/>-->
+<!--    <button label="Embed" onClick="win.doEmbedded();"/>-->
+<!--    <button label="Highlighted" onClick="win.doHighlighted();"/>-->
+<!--</zk>-->
+
+<!--<window title="Grid Demo" border="normal" width="360px">-->
+<!--    <zscript>-->
+<!--        class Comp implements Comparator {-->
+<!--        private boolean _asc;-->
+<!--        public Comp(boolean asc) {-->
+<!--        _asc = asc;-->
+<!--        }-->
+<!--        public int compare(Object o1, Object o2) {-->
+<!--        String s1 = o1.getChildren().get(0).getValue(),-->
+<!--        s2 = o2.getChildren().get(0).getValue();-->
+<!--        int v = s1.compareTo(s2);-->
+<!--        return _asc ? v: -v;-->
+<!--        }-->
+<!--        }-->
+<!--        Comp asc = new Comp(true), dsc = new Comp(false);-->
+<!--    </zscript>-->
+<!--    <grid>-->
+<!--        <columns sizable="true">-->
+<!--            <column label="Type" sortAscending="&#36;{asc}" sortDescending="&#36;{dsc}" width="50px"/>-->
+<!--            <column label="Content"/>-->
+<!--        </columns>-->
+<!--        <rows>-->
+<!--            <row>-->
+<!--                <label value="File:"/>-->
+<!--                <textbox width="99%"/>-->
+<!--            </row>-->
+<!--            <row>-->
+<!--                <label value="Type:"/>-->
+<!--                <hbox>-->
+<!--                    <listbox rows="1" mold="select">-->
+<!--                        <listitem label="Java Files,(*.java)"/>-->
+<!--                        <listitem label="All Files,(*.*)"/>-->
+<!--                    </listbox>-->
+<!--                    <button label="Browse..."/>-->
+<!--                </hbox>-->
+<!--            </row>-->
+<!--            <row>-->
+<!--                <label value="Options:"/>-->
+<!--                <textbox rows="3" width="99%"/>-->
+<!--            </row>-->
+<!--        </rows>-->
+<!--    </grid>-->
+<!--</window>-->
+
+<!--<grid width="300px" mold="paging" pageSize="4">-->
+<!--    <columns>-->
+<!--        <column label="Left"/>-->
+<!--        <column label="Right"/>-->
+<!--    </columns>-->
+<!--    <rows>-->
+<!--        <row>-->
+<!--            <label value="Item 1.1"/><label value="Item 1.2"/>-->
+<!--        </row>-->
+<!--        <row>-->
+<!--            <label value="Item 2.1"/><label value="Item 2.2"/>-->
+<!--        </row>-->
+<!--        <row>-->
+<!--            <label value="Item 3.1"/><label value="Item 3.2"/>-->
+<!--        </row>-->
+<!--        <row>-->
+<!--            <label value="Item 4.1"/><label value="Item 4.2"/>-->
+<!--        </row>-->
+<!--        <row>-->
+<!--            <label value="Item 5.1"/><label value="Item 5.2"/>-->
+<!--        </row>-->
+<!--        <row>-->
+<!--            <label value="Item 6.1"/><label value="Item 6.2"/>-->
+<!--        </row>-->
+<!--        <row>-->
+<!--            <label value="Item 7.1"/><label value="Item 7.2"/>-->
+<!--        </row>-->
+<!--    </rows>-->
+<!--</grid>-->
+
+<zk>
+    <zscript><![CDATA[
+		ListModelList lm = new ListModelList(Arrays.asList(new String[] { "David",
+				"Male", "21 December 200", "Bali" }, { "Darmawan", "Male", "22 December 2001", "Bandung"}));
+
+	]]></zscript>
+    <window border="normal" width="360px">
+        Student List
+        <grid id="grid" model="${lm}" autopaging="true"
+              style="border: 2px solid #ccc; background-color: black;"
+              onAfterRender='gridCount.setValue("row count: "+self.getRows().getChildren().size()+"");'>
+            <!--    <columns>-->
+            <!--        <column label="column1"/>-->
+            <!--    </columns>-->
+            <!--    <rows>-->
+            <!--        <row forEach="${lm}">-->
+            <!--            ${lm}-->
+            <!--        </row>-->
+            <!--    </rows>-->
+        </grid>
+        <label id="gridCount" />
+    </window>
+</zk>
+
+        <!--<zk>-->
+        <!--    <zscript><![CDATA[-->
+        <!--        import org.zkoss.zul.ext.Pageable;-->
+
+        <!--        List model = new ListModelList(Locale.getAvailableLocales());-->
+        <!--        public void next(){-->
+        <!--             int activePage = ((Pageable)model).getActivePage();-->
+        <!--            ((Pageable)model).setActivePage(activePage + 1);-->
+        <!--        }-->
+
+        <!--        public void previous(){-->
+        <!--            int activePage = ((Pageable)model).getActivePage();-->
+        <!--            if (&#45;&#45;activePage < 0 ){-->
+        <!--                activePage = 0;-->
+        <!--            }-->
+        <!--            ((Pageable)model).setActivePage(activePage);-->
+        <!--        }-->
+        <!--        ]]></zscript>-->
+        <!--    <grid model="${model}" mold="paging" pageSize="5">-->
+        <!--    <columns>-->
+        <!--        <column label="Locale"/>-->
+        <!--    </columns>-->
+        <!--    <template name="model">-->
+        <!--        <row>-->
+        <!--            ${each}-->
+        <!--        </row>-->
+        <!--    </template>-->
+        <!--    </grid>-->
+        <!--        <button label="Previous" onClick="previous()"/>-->
+        <!--        <button label="Next" onClick="next()"/>-->
+        <!--</zk>-->
+
+        <!--<grid width="400px">-->
+        <!--    <auxhead>-->
+        <!--        <auxheader label="A" rowspan="2" />-->
+        <!--        <auxheader label="BC" colspan="2" />-->
+        <!--        <auxheader label="D" rowspan="2" />-->
+        <!--    </auxhead>-->
+        <!--    <auxhead>-->
+        <!--        <auxheader label="B" />-->
+        <!--        <auxheader label="C" />-->
+        <!--    </auxhead>-->
+        <!--    <columns visible="false">-->
+        <!--        <column width="100px" />-->
+        <!--        <column width="100px" />-->
+        <!--        <column width="100px" />-->
+        <!--        <column width="100px" />-->
+        <!--    </columns>-->
+        <!--    <rows>-->
+        <!--        <row>-->
+        <!--            <label forEach="E,F,G,H" value="${each}" />-->
+        <!--        </row>-->
+        <!--    </rows>-->
+        <!--</grid>-->
+
+<zk>
+Please open/close the +/- button, and the layout of this page shows
+properly.
+<grid fixedLayout="true" width="600px">
+    <columns>
+        <column width="40px" />
+        <column>Product Name</column>
+        <column>Price</column>
+        <column>Item location</column>
+    </columns>
+    <rows>
+        <row>
+            <detail>
+                <hlayout>
+                    <image width="200px" height="200px" src="/img/icon_update.png" />
+                    <vlayout>
+                        <label value="Item Specifics - Item Condition    " style="font-weight:bold;font-style: italic;" />
+                        <hlayout>
+                            <label value="Condition:" />
+                            <label value="Used" style="font-weight:bold;" />
+                        </hlayout>
+                        <hlayout>
+                            <label value="Brand:" />
+                            <label value="Apple" style="font-weight:bold;" />
+                        </hlayout>
+                        <hlayout>
+                            <label value="Technology:" />
+                            <label value="DVI" style="font-weight:bold;" />
+                        </hlayout>
+                        <hlayout>
+                            <label value="Monitor Type:" />
+                            <label value="LCD/Flat Panel" style="font-weight:bold;" />
+                        </hlayout>
+                    </vlayout>
+                </hlayout>
+            </detail>
+            <label value="Apple 20-inch Aluminum Cinema Display M9177/A" />
+            <label style="color:green;float:right;" value="US $202.50" />
+            <label value="tulsa, ok, United States" />
+        </row>
+    </rows>
+</grid>
+</zk>

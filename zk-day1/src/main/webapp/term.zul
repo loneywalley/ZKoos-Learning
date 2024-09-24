@@ -1,0 +1,52 @@
+<zk>
+    <window border="normal" width="800px" height="600px"
+            style="background-color: #f9f9f9; padding: 20px;"
+            position="center" title="Terms of Use"
+            mode="overlapped">
+
+        <label value="Terms of Use" style="font-size: 24px; font-weight: bold; text-align: center;" />
+
+        <div style="max-height: 450px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            <label value="1. Acceptance of Terms:" style="font-weight: bold;"/>
+            <label value="By accessing or using our application, you agree to be bound by these terms." />
+
+            <label value="2. Modifications to Terms:" style="font-weight: bold;"/>
+            <label value="We may modify these terms from time to time, and will notify you of such changes." />
+
+            <label value="3. User Responsibilities:" style="font-weight: bold;"/>
+            <label value="You agree to use the application responsibly and comply with all applicable laws." />
+
+            <label value="4. Privacy Policy:" style="font-weight: bold;"/>
+            <label value="Your privacy is important to us. Please review our privacy policy to understand how we handle your information." />
+
+            <label value="5. Limitation of Liability:" style="font-weight: bold;"/>
+            <label value="We are not liable for any damages resulting from your use of the application." />
+
+            <label value="6. Governing Law:" style="font-weight: bold;"/>
+            <label value="These terms shall be governed by the laws of the jurisdiction in which we operate." />
+
+            <label value="7. Contact Information:" style="font-weight: bold;"/>
+            <label value="If you have any questions regarding these terms, please contact us at support@example.com." />
+        </div>
+
+<!--        <hbox>-->
+<!--            <button label="Accept" onClick="doAccept()" style="margin-top: 20px; background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;" />-->
+<!--            <button label="Decline" onClick="doDecline()" style="margin-top: 20px; background-color: #f44336; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;" />-->
+<!--        </hbox>-->
+
+<!--        <zscript><![CDATA[-->
+<!--            void doAccept() {-->
+<!--                // Logic for accepting the terms-->
+<!--                Messagebox.show("You have accepted the terms of use.", "Information", Messagebox.OK, Messagebox.INFORMATION);-->
+<!--                // Redirect or perform any action after acceptance-->
+<!--            }-->
+
+<!--            void doDecline() {-->
+<!--                // Logic for declining the terms-->
+<!--                Messagebox.show("You have declined the terms of use. The application will close.", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);-->
+<!--                // Close the window or redirect-->
+<!--                Executions.getCurrent().getDesktop().getExecution().sendRedirect("registrationform.zul"); // Adjust redirect as needed-->
+<!--            }-->
+<!--        ]]></zscript>-->
+    </window>
+</zk>
