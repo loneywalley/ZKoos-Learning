@@ -34,12 +34,69 @@
 <!--    </window>-->
 <!--</zk>-->
 
+<!--<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>-->
+<!--<zk>-->
+<!--    <window title="Search" border="normal" width="720px" apply="data.UserController"-->
+<!--            self="@define(content)">-->
+
+<!--        &lt;!&ndash; Search Field and Button &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Search Field and Button &ndash;&gt;-->
+<!--        <hbox>-->
+<!--            <label value="Keyword:"/>-->
+<!--            <textbox id="keywordBox" />-->
+<!--            <button id="searchButton" label="Search" iconSclass="z-icon-search" />-->
+<!--        </hbox>-->
+
+<!--        &lt;!&ndash; Listbox to display users &ndash;&gt;-->
+<!--        <listbox id="userListBox" model="@load(dataModel)" emptyMessage="No User found in the result" rows="5" checkmark="true" multiple="false">-->
+<!--            <listhead>-->
+<!--                <listheader label="Id" />-->
+<!--                <listheader label="Name" />-->
+<!--                <listheader label="Gender" />-->
+<!--                <listheader label="Birthday" />-->
+<!--                <listheader label="Country" />-->
+<!--                <listheader label="Action" />-->
+<!--            </listhead>-->
+<!--            <template name="model" var="user">-->
+<!--                <listitem>-->
+<!--                    <listcell label="${each.id}"/>-->
+<!--                    <listcell label="${each.name}"/>-->
+<!--                    <listcell label="${each.gender}"/>-->
+<!--                    <listcell label="${each.birthday}"/>-->
+<!--                    <listcell label="${each.country}"/>-->
+<!--                    <listcell>-->
+<!--                        &lt;!&ndash; Delete Button for each user &ndash;&gt;-->
+<!--                        <button label="Delete" onClick="@command('deleteUser', user=user)" sclass="deleteButton" />-->
+<!--                    </listcell>-->
+<!--                </listitem>-->
+<!--            </template>-->
+<!--        </listbox>-->
+
+<!--        &lt;!&ndash; Display selected user details &ndash;&gt;-->
+<!--        <vlayout>-->
+<!--            <label value="ID:" />-->
+<!--            <label id="idLabel" />-->
+<!--            <label value="Name:" />-->
+<!--            <textbox id="nameInput" value="@load(nameInput)" />-->
+<!--            <label value="Gender:" />-->
+<!--            <textbox id="genderInput" value="@load(genderInput)" />-->
+<!--            <label value="Birthday:" />-->
+<!--            <textbox id="birthdayInput" value="@load(birthdayInput)" />-->
+<!--            <label value="Country:" />-->
+<!--            <textbox id="countryInput" value="@load(countryInput)" />-->
+<!--            <hbox>-->
+<!--                <button label="Update" onClick="@command('updateUser')" id="updateButton" />-->
+<!--&lt;!&ndash;                <button label="Reset" onClick="@command('resetFields')" />&ndash;&gt;-->
+<!--            </hbox>-->
+<!--        </vlayout>-->
+<!--    </window>-->
+<!--</zk>-->
+
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
     <window title="Search" border="normal" width="720px" apply="data.UserController"
             self="@define(content)">
-
-        <!-- Search Field and Button -->
 
         <!-- Search Field and Button -->
         <hbox>
@@ -78,13 +135,16 @@
             <label value="ID:" />
             <label id="idLabel" />
             <label value="Name:" />
-            <label id="nameLabel" />
+            <textbox id="nameLabel" />
             <label value="Gender:" />
-            <label id="genderLabel" />
+            <textbox id="genderLabel" />
             <label value="Birthday:" />
-            <label id="birthdayLabel" />
+            <textbox id="birthdayLabel" />
             <label value="Country:" />
-            <label id="countryLabel" />
+            <textbox id="countryLabel" />
+            <hbox>
+                <button label="Update" onClick="@command('updateUser')" id="updateButton" />
+            </hbox>
         </vlayout>
     </window>
 </zk>

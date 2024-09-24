@@ -39,4 +39,14 @@ public class UserServiceImpl implements UserService{
     public void add(User user) {
         Regis.userList.add(user);
     }
+
+    @Override
+    public void update(User user) {
+        for (int i = 0; i < Regis.userList.size(); i++) {
+            if (Regis.userList.get(i).getId().equals(user.getId())) {
+                Regis.userList.set(i, user); // Replace the existing user with updated data
+                break;
+            }
+        }
+    }
 }
