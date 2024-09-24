@@ -11,6 +11,8 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import sun.security.x509.UniqueIdentity;
 
+import java.util.UUID;
+
 public class RegisFormController extends SelectorComposer<Component> {
     @Wire
     private Textbox nameInput;
@@ -32,7 +34,7 @@ public class RegisFormController extends SelectorComposer<Component> {
     public void submitData(){
         System.out.println(nameInput.getValue());
 
-        userService.add(new User(identity.getId(),nameInput.getValue(), genderInput.getValue(),
+        userService.add(new User(UUID.randomUUID().toString(),nameInput.getValue(), genderInput.getValue(),
                 birthdayInput.getValue(), countryInput.getValue()));
 
         Executions.sendRedirect("playerSearch.zul");

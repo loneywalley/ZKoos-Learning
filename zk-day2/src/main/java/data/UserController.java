@@ -8,15 +8,17 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Messagebox;
 
+import java.util.List;
 import java.util.Set;
 
 public class UserController extends SelectorComposer<Component> {
 
     @Wire
-    private Textbox keywordBox;
+    private Textbox keywordBox; // For search functionality
     @Wire
-    private Listbox userListBox;
+    private Listbox userListBox; // Listbox for displaying users
     @Wire
     private Label idLabel;
     @Wire
@@ -28,39 +30,55 @@ public class UserController extends SelectorComposer<Component> {
     @Wire
     private Label countryLabel;
 
-
+    // Data model to manage user list
     private ListModelList<User> dataModel = new ListModelList<>();
-
-    private UserService userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl(); // UserService to manage user data
 
     public UserController() {
-        dataModel.addAll(userService.findAll());
+        dataModel.addAll(userService.findAll()); // Load all users initially
     }
 
     @Override
-    public void doAfterCompose(Component comp) throws Exception{
+    public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        userListBox.setModel(dataModel);
+        userListBox.setModel(dataModel); // Set the data model to the listbox
     }
 
-    @Listen("onClick = #deleteButton")
-    public void deleteItem(){
-        
-    }
-
+    // Show user details when a user is selected in the listbox
     @Listen("onSelect = #userListBox")
-    public void showDetail(){
+    public void showDetail() {
         Set<User> selection = dataModel.getSelection();
-        User selected = selection.iterator().next();
-
-        idLabel.setValue(selected.getId().toString());
-        nameLabel.setValue(selected.getName());
-        genderLabel.setValue(selected.getGender());
-        birthdayLabel.setValue(selected.getBirthday());
-        countryLabel.setValue(selected.getCountry());
+        if (!selection.isEmpty()) {
+            User selected = selection.iterator().next(); // Get the selected user
+            idLabel.setValue(selected.getId().toString());
+            nameLabel.setValue(selected.getName());
+            genderLabel.setValue(selected.getGender());
+            birthdayLabel.setValue(selected.getBirthday());
+            countryLabel.setValue(selected.getCountry());
+        }
     }
 
+    // Search users by keyword entered in the textbox
+    @Listen("onClick = #searchButton")
+    public void searchUser() {
+        String keyword = keywordBox.getValue(); // Get search keyword
+        List<User> searchResult = userService.search(keyword); // Fetch users by keyword
+        dataModel.clear();
+        dataModel.addAll(searchResult); // Update the listbox with search results
+    }
 
+    // Delete a selected user from the listbox
+    @Listen("onClick = .deleteButton")
+    public void deleteUser() {
+        Set<User> selectedUsers = dataModel.getSelection(); // Get the selected user(s)
 
-
+        if (selectedUsers != null && !selectedUsers.isEmpty()) {
+            User userToDelete = selectedUsers.iterator().next(); // Get the first selected user
+            userService.delete(userToDelete); // Delete the user from the service
+            dataModel.remove(userToDelete); // Remove the user from the listbox
+            Messagebox.show("User deleted successfully.", "Information", Messagebox.OK, Messagebox.INFORMATION);
+        } else {
+            Messagebox.show("Please select a user to delete!", "Error", Messagebox.OK, Messagebox.ERROR);
+        }
+    }
 }

@@ -1,13 +1,13 @@
 package data;
 
 public class User {
-    private Integer id;
+    private String id;
     private String name;
     private String gender;
     private String birthday;
     private String country;
 
-    public User(Integer id, String name, String gender, String birthday, String country) {
+    public User(String id, String name, String gender, String birthday, String country) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -15,7 +15,7 @@ public class User {
         this.country = country;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -35,7 +35,7 @@ public class User {
         return country;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

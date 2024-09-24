@@ -1,34 +1,90 @@
+<!--<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>-->
+<!--<zk>-->
+<!--    <window title="Search" border="normal" width="720px" apply="data.UserController"-->
+<!--            self="@define(content)">-->
+<!--        Keyword:-->
+<!--        <textbox id="keywordbox" />-->
+<!--        <button id="searchButton" label="Search" iconSclass="z-icon-search"/>-->
+<!--        <listbox id="userListBox" emptyMessage="No User found in the result" rows="5">-->
+<!--            <listhead>-->
+<!--                <listheader label="Id" />-->
+<!--                <listheader label="Name" />-->
+<!--                <listheader label="Gender" />-->
+<!--                <listheader label="Birthday" />-->
+<!--                <listheader label="Country" />-->
+<!--                <listheader label="Delete" />-->
+<!--            </listhead>-->
+<!--            <template name="model">-->
+<!--                <listitem>-->
+<!--                    <listcell label="${each.id}"/>-->
+<!--                    <listcell label="${each.name}"/>-->
+<!--                    <listcell label="${each.gender}"/>-->
+<!--                    <listcell label="${each.birthday}"/>-->
+<!--                    <listcell label="${each.country}"/>-->
+<!--                </listitem>-->
+<!--            </template>-->
+<!--        </listbox>-->
+<!--        <vlayout>-->
+<!--            <label id="idLabel"/>-->
+<!--            <label id="nameLabel"/>-->
+<!--            <label id="genderLabel"/>-->
+<!--            <label id="birthdayLabel"/>-->
+<!--            <label id="countryLabel"/>-->
+<!--        </vlayout>-->
+<!--    </window>-->
+<!--</zk>-->
+
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
     <window title="Search" border="normal" width="720px" apply="data.UserController"
             self="@define(content)">
-        Keyword:
-        <textbox id="keywordbox" />
-        <button id="searchButton" label="Search" iconSclass="z-icon-search"/>
-        <listbox id="userListBox" emptyMessage="No User found in the result" rows="5">
+
+        <!-- Search Field and Button -->
+
+        <!-- Search Field and Button -->
+        <hbox>
+            <label value="Keyword:"/>
+            <textbox id="keywordBox" />
+            <button id="searchButton" label="Search" iconSclass="z-icon-search" />
+        </hbox>
+
+        <!-- Listbox to display users -->
+        <listbox id="userListBox" model="@load(dataModel)" emptyMessage="No User found in the result" rows="5" checkmark="true" multiple="false">
             <listhead>
                 <listheader label="Id" />
                 <listheader label="Name" />
                 <listheader label="Gender" />
                 <listheader label="Birthday" />
                 <listheader label="Country" />
+                <listheader label="Action" />
             </listhead>
-            <template name="model">
+            <template name="model" var="user">
                 <listitem>
                     <listcell label="${each.id}"/>
                     <listcell label="${each.name}"/>
                     <listcell label="${each.gender}"/>
                     <listcell label="${each.birthday}"/>
                     <listcell label="${each.country}"/>
+                    <listcell>
+                        <!-- Delete Button for each user -->
+                        <button label="Delete" onClick="@command('deleteUser', user=user)" sclass="deleteButton" />
+                    </listcell>
                 </listitem>
             </template>
         </listbox>
+
+        <!-- Display selected user details -->
         <vlayout>
-            <label id="idLabel"/>
-            <label id="nameLabel"/>
-            <label id="genderLabel"/>
-            <label id="birthdayLabel"/>
-            <label id="countryLabel"/>
+            <label value="ID:" />
+            <label id="idLabel" />
+            <label value="Name:" />
+            <label id="nameLabel" />
+            <label value="Gender:" />
+            <label id="genderLabel" />
+            <label value="Birthday:" />
+            <label id="birthdayLabel" />
+            <label value="Country:" />
+            <label id="countryLabel" />
         </vlayout>
     </window>
 </zk>

@@ -29,6 +29,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void delete(User user) {
+        // Remove the user from the list
+        Regis.userList.removeIf(existingUser -> existingUser.getId().equals(user.getId()));
+    }
+
+
+    @Override
     public void add(User user) {
         Regis.userList.add(user);
     }
