@@ -1,5 +1,8 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
-    <window style="text-align:center;">
+    <window style="text-align:center;"
+            position="center" mode="overlapped"
+            apply="org.zkoss.bind.BindComposer">
         Welcome Onboard, Captain
     </window>
 </zk>

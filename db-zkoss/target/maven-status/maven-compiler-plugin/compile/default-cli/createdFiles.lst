@@ -1,0 +1,5 @@
+com\fif\services\impl\LogDao.class
+com\fif\entity\Log.class
+com\fif\services\MyService.class
+com\fif\MyViewModel.class
+com\fif\services\impl\MyServiceImpl.class

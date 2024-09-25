@@ -98,29 +98,29 @@
 <!--    </rows>-->
 <!--</grid>-->
 
-<zk>
-    <zscript><![CDATA[
-		ListModelList lm = new ListModelList(Arrays.asList(new String[] { "David",
-				"Male", "21 December 200", "Bali" }, { "Darmawan", "Male", "22 December 2001", "Bandung"}));
+<!--<zk>-->
+<!--    <zscript><![CDATA[-->
+<!--		ListModelList lm = new ListModelList(Arrays.asList(new String[] { "David",-->
+<!--				"Male", "21 December 200", "Bali" }, { "Darmawan", "Male", "22 December 2001", "Bandung"}));-->
 
-	]]></zscript>
-    <window border="normal" width="360px">
-        Student List
-        <grid id="grid" model="${lm}" autopaging="true"
-              style="border: 2px solid #ccc; background-color: black;"
-              onAfterRender='gridCount.setValue("row count: "+self.getRows().getChildren().size()+"");'>
-            <!--    <columns>-->
-            <!--        <column label="column1"/>-->
-            <!--    </columns>-->
-            <!--    <rows>-->
-            <!--        <row forEach="${lm}">-->
-            <!--            ${lm}-->
-            <!--        </row>-->
-            <!--    </rows>-->
-        </grid>
-        <label id="gridCount" />
-    </window>
-</zk>
+<!--	]]></zscript>-->
+<!--    <window border="normal" width="360px">-->
+<!--        Student List-->
+<!--        <grid id="grid" model="${lm}" autopaging="true"-->
+<!--              style="border: 2px solid #ccc; background-color: black;"-->
+<!--              onAfterRender='gridCount.setValue("row count: "+self.getRows().getChildren().size()+"");'>-->
+<!--            &lt;!&ndash;    <columns>&ndash;&gt;-->
+<!--            &lt;!&ndash;        <column label="column1"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;    </columns>&ndash;&gt;-->
+<!--            &lt;!&ndash;    <rows>&ndash;&gt;-->
+<!--            &lt;!&ndash;        <row forEach="${lm}">&ndash;&gt;-->
+<!--            &lt;!&ndash;            ${lm}&ndash;&gt;-->
+<!--            &lt;!&ndash;        </row>&ndash;&gt;-->
+<!--            &lt;!&ndash;    </rows>&ndash;&gt;-->
+<!--        </grid>-->
+<!--        <label id="gridCount" />-->
+<!--    </window>-->
+<!--</zk>-->
 
         <!--<zk>-->
         <!--    <zscript><![CDATA[-->
@@ -178,8 +178,6 @@
         <!--</grid>-->
 
 <zk>
-Please open/close the +/- button, and the layout of this page shows
-properly.
 <grid fixedLayout="true" width="600px">
     <columns>
         <column width="40px" />

@@ -1,8 +1,10 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
     <window border="normal" width="800px" height="600px"
             style="background-color: #f9f9f9; padding: 20px;"
             position="center" title="Terms of Use"
-            mode="overlapped">
+            mode="overlapped"
+            apply="org.zkoss.bind.BindComposer">
 
         <label value="Terms of Use" style="font-size: 24px; font-weight: bold; text-align: center;" />
 

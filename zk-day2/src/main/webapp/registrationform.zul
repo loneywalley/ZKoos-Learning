@@ -365,50 +365,164 @@
 <!--</zk>-->
 
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
-<zk>
-    <window title="Registration Form" border="normal"
-            width="400px" style="background-color: #f9f9f9; padding: 20px;"
-            position="center" mode="overlapped" apply="data.RegisFormController"
-            self="@define(content)">
-        <vbox spacing="10px" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
-            <hbox>
-                <label value="Name:" width="100px" style="font-weight: bold;" />
-                <textbox id="nameInput" placeholder="Please Enter Your Name"
-                         constraint="no empty"
-                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
-            </hbox>
-            <hbox>
-                <label value="Gender:" width="100px" style="font-weight: bold;" />
-                <textbox id="genderInput" placeholder="Please Enter Your Gender"
-                         constraint="no empty"
-                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
-            </hbox>
-            <hbox>
-                <label value="Date of Birth:" width="100px" style="font-weight: bold;" />
-                <textbox id="birthdayInput" placeholder="Please Enter Your Birth Date"
-                         constraint="no empty"
-                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
-            </hbox>
-            <hbox>
-                <label value="Country:" width="100px" style="font-weight: bold;" />
+<!--<zk>-->
+<!--    <window title="Registration Form" border="normal"-->
+<!--            width="400px" style="background-color: #f9f9f9; padding: 20px;"-->
+<!--            position="center" mode="overlapped" apply="data.RegisFormController"-->
+<!--            self="@define(content)">-->
+<!--        <vbox spacing="10px" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">-->
+<!--            <hbox>-->
+<!--                <label value="Name:" width="100px" style="font-weight: bold;" />-->
+<!--                <textbox id="nameInput" placeholder="Please Enter Your Name"-->
+<!--                         constraint="no empty"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Gender:" width="100px" style="font-weight: bold;" />-->
+<!--                <textbox id="genderInput" placeholder="Please Enter Your Gender"-->
+<!--                         constraint="no empty"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Date of Birth:" width="100px" style="font-weight: bold;" />-->
+<!--                <textbox id="birthdayInput" placeholder="Please Enter Your Birth Date"-->
+<!--                         constraint="no empty"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <label value="Country:" width="100px" style="font-weight: bold;" />-->
 
-                <textbox id="countryInput" placeholder="Please Enter Your Country"
-                         constraint="no empty"
-                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
-            </hbox>
-            <hbox>
-                <checkbox id="agreeCheckbox" onChange="checkForm()"
-                          label="I agree to the terms and conditions"/>
-            </hbox>
-            <hbox>
-                <button id="submitButton" label="Submit"
-                        disabled="false"
-                        style="background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"
-                />
-                <button label="Reset" onClick="resetForm()"
-                        style="background-color: #f44336; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"
-                />
-            </hbox>
-        </vbox>
+<!--                <textbox id="countryInput" placeholder="Please Enter Your Country"-->
+<!--                         constraint="no empty"-->
+<!--                         style="border: 1px solid #ccc; padding: 5px; width: 100%;" />-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <checkbox id="agreeCheckbox" onChange="checkForm()"-->
+<!--                          label="I agree to the terms and conditions"/>-->
+<!--            </hbox>-->
+<!--            <hbox>-->
+<!--                <button id="submitButton" label="Submit"-->
+<!--                        disabled="false"-->
+<!--                        style="background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"-->
+<!--                />-->
+<!--                <button label="Reset" onClick="resetForm()"-->
+<!--                        style="background-color: #f44336; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; width: 100%;"-->
+<!--                />-->
+<!--            </hbox>-->
+<!--        </vbox>-->
+<!--    </window>-->
+<!--</zk>-->
+
+<zk xmlns:n="native" xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:w="client">
+    <style>
+        .form-container {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+        }
+
+        .form-row {
+        margin-bottom: 10px;
+        }
+
+        .form-label {
+        width: 120px;
+        text-align: right;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #555;
+        }
+
+        .form-input {
+        width: 250px;
+        }
+
+        .form-actions {
+        margin-top: 20px;
+        }
+
+        .form-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        }
+
+        .form-button:hover {
+        background-color: #45a049;
+        }
+
+        .form-button[disabled] {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        }
+
+        .clear-button {
+        background-color: #f44336;
+        }
+
+        .clear-button:hover {
+        background-color: #d32f2f;
+        }
+
+        .agree-checkbox {
+        margin-left: 10px;
+        }
+    </style>
+    <window title="Registration Form" border="normal" width="500px"
+            self="@define(content)" apply="org.zkoss.bind.BindComposer"
+            position="center" mode="overlapped"
+            viewModel="@id('vm') @init('data.RegistrationViewModel')">
+        <vlayout>
+            <grid>
+                <rows>
+                    <row>
+                        <label value="Name:" />
+                        <textbox value="@bind(vm.name)" onChange="@command('validateForm')" placeholder="Enter name" />
+                    </row>
+                    <row>
+                        <label value="Birthdate:" />
+                        <datebox value="@bind(vm.birthdate)" onChange="@command('validateForm')" />
+                    </row>
+                    <row>
+                        <label value="Gender:" />
+                        <radiogroup selectedItem="@bind(vm.gender)">
+                            <radio label="Male" value="Male" onCheck="@command('validateForm')" />
+                            <radio label="Female" value="Female" onCheck="@command('validateForm')" />
+                        </radiogroup>
+                    </row>
+                    <row>
+                        <label value="Country:" />
+                        <combobox value="@bind(vm.country)" onChange="@command('validateForm')">
+                            <comboitem label="Indonesia" />
+                            <comboitem label="Malaysia" />
+                            <comboitem label="Thailand" />
+                            <!-- Add other ASEAN countries -->
+                        </combobox>
+                    </row>
+                    <row>
+                        <label value="Agree to terms:" />
+                        <checkbox checked="@bind(vm.agree)" disabled="@load(!vm.canSubmit)" label="Agree" />
+                    </row>
+                </rows>
+            </grid>
+
+            <hlayout>
+                <button label="Submit" onClick="@command('submit')" disabled="@load(!vm.canSubmit)" />
+                <button label="Clear" onClick="@command('clearForm')" />
+            </hlayout>
+        </vlayout>
     </window>
 </zk>

@@ -195,7 +195,6 @@ public class UserController extends SelectorComposer<Component> {
         if (!selection.isEmpty()) {
             User userToUpdate = selection.iterator().next();
             userToUpdate.setName(nameLabel.getValue());
-            userToUpdate.setGender(genderLabel.getValue());
             userToUpdate.setBirthday(birthdayLabel.getValue());
             userToUpdate.setCountry(countryLabel.getValue());
 

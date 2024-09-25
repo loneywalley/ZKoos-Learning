@@ -1,7 +1,10 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
     <window border="normal" width="600px" height="600px"
             style="background-color: #f9f9f9; padding: 20px;"
-            position="center" mode="overlapped" title="FAQ - Frequently Asked Questions">
+            position="center" mode="overlapped"
+            apply="org.zkoss.bind.BindComposer"
+            title="FAQ - Frequently Asked Questions">
 
         <vlayout spacing="10px">
 
