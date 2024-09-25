@@ -197,9 +197,17 @@
 	</mime-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.zul</welcome-file>
-		<welcome-file>index.zhtml</welcome-file>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
+<!--		<welcome-file>template.zul</welcome-file>-->
+<!--		<welcome-file>playerSearch.zul</welcome-file>-->
+		<welcome-file>registrationform.zul</welcome-file>
+<!--		<welcome-file>term.zul</welcome-file>-->
+<!--		<welcome-file>help.zul</welcome-file>-->
+<!--		<welcome-file>data.zul</welcome-file>-->
+<!--		<welcome-file>welcomepage.zul</welcome-file>-->
+<!--		<welcome-file>helloworld.zul</welcome-file>-->
+<!--		<welcome-file>index.zul</welcome-file>-->
+<!--		<welcome-file>index.zhtml</welcome-file>-->
+<!--		<welcome-file>index.html</welcome-file>-->
+<!--		<welcome-file>index.htm</welcome-file>-->
 	</welcome-file-list>
 </web-app>
