@@ -28,4 +28,8 @@ public class RegisServiceImpl implements RegisService {
     public void deleteRegis(Registration registration){
         registerRepo.delete(registration);
     }
+
+    public Registration updateRegis(Registration registration){
+        return registerRepo.editRegis(registration);
+    }
 }

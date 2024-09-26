@@ -6,11 +6,13 @@
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('com.fif.viewModel.RegistrationViewModel')"
             position="center">
+          <a href="/logout" label="Back" />
           <vlayout>
         <!-- Search Input Field -->
               <hbox>
                   <label value="Search:" />
                   <textbox value="@bind(vm.searchText)" onChange="@command('search')" placeholder="Enter name or country" />
+                  <button onChange="@command('search')" label="Search" />
               </hbox>
 
         <!-- Data Table -->

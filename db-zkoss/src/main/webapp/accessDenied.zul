@@ -1,0 +1,6 @@
+<zk>
+    <window>
+        Access Denied
+        <a href="/logout" label="Back" />
+    </window>
+</zk>

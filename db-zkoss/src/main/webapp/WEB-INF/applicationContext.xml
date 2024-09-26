@@ -16,6 +16,25 @@
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="myapp"/>
 	</bean>
+
+	<bean id="securityConfig" class="com.fif.config.SecurityConfig" />
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+		<property name="url" value="jdbc:hsqldb:file:data/db"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+
+	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" depends-on="dataSource">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="baselineOnMigrate" value="true"/>
+		<property name="locations">
+			<list>
+				<value>classpath:db/migration</value>
+			</list>
+		</property>
+	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />

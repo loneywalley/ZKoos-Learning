@@ -47,6 +47,8 @@ public class RegistrationViewModel {
         }
     }
 
+
+
     @Command
     @NotifyChange("regisListModel")
     public void submit() {
@@ -61,7 +63,7 @@ public class RegistrationViewModel {
         }
 
         clearForm();  // Clear form after submission
-        Executions.sendRedirect("playerSearch.zul");    }
+        Executions.sendRedirect("registrationform.zul");    }
 
     @Command
     @NotifyChange({"name", "birthdate", "gender", "country", "agree", "canSubmit"})
@@ -72,6 +74,19 @@ public class RegistrationViewModel {
         country = "";
         agree = false;
         canSubmit = false;
+    }
+
+    @Command
+    @NotifyChange("regisListModel")
+    public void search() {
+        List<Registration> filteredList = new ArrayList<>();
+        for (Registration reg : regisService.getRegis()) {
+            if (reg.getName().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredList.add(reg);
+            }
+        }
+        regisListModel.clear();
+        regisListModel.addAll(filteredList);
     }
 
     @Command
@@ -101,6 +116,32 @@ public class RegistrationViewModel {
     public void edit(@BindingParam("reg") Registration reg) {
         editing.put(reg, true);  // Set the registration in edit mode
     }
+
+    @Command
+    @NotifyChange({"editing", "regisListModel"})
+    public void save(@BindingParam("reg") Registration reg) {
+        try {
+            // Update the registration entity via the service
+            regisService.updateRegis(reg);
+
+            // Exit the edit mode for the updated registration
+            editing.put(reg, false);
+
+            // Sync the updated data with the session and UI list
+            Session session = Sessions.getCurrent();
+            if (session != null) {
+                List<Registration> updatedList = regisService.getRegis();  // Fetch the updated list from the service
+                regisListModel.clear();  // Clear the current list
+                regisListModel.addAll(updatedList);  // Add all updated registrations to the model list
+                session.setAttribute("registrationList", regisListModel);  // Sync with the session
+            }
+
+        } catch (Exception e) {
+            // Handle any potential errors (log or notify user)
+            System.out.println("Error updating registration: " + e.getMessage());
+        }
+    }
+
 
     // Getters and setters for ListModel and filteredList
 

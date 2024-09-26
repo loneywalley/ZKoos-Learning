@@ -10,4 +10,6 @@ public interface RegisService {
     List<Registration> getRegis();
 
     void deleteRegis(Registration registration);
+
+    Registration updateRegis(Registration registration);
 }

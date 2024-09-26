@@ -71,6 +71,7 @@
             self="@define(content)" apply="org.zkoss.bind.BindComposer"
             position="center" mode="overlapped"
             viewModel="@id('vm') @init('com.fif.viewModel.RegistrationViewModel')">
+        <a href="/logout" label="Back" />
         <vlayout>
             <grid>
                 <rows>

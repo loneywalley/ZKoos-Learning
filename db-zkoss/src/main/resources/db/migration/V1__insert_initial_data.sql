@@ -1,0 +1,1 @@
+INSERT INTO registration (id, name, birthdate, gender, country) VALUES (501, 'bambam', '2020-09-12 00:00:00.000000','Male','Brunei');

@@ -1,5 +1,11 @@
-com\fif\entity\Registration.class
+com\fif\services\impl\UserServiceImpl.class
+com\fif\repository\UserRepository.class
+com\fif\config\SecurityConfig.class
+com\fif\viewModel\Main.class
 com\fif\services\RegisService.class
 com\fif\viewModel\RegistrationViewModel.class
 com\fif\repository\RegisterRepo.class
+com\fif\entity\User.class
 com\fif\services\impl\RegisServiceImpl.class
+com\fif\entity\Role.class
+com\fif\entity\Registration.class

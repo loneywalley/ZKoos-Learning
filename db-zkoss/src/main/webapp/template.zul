@@ -24,7 +24,7 @@
                     <label value="Menu" style="font-weight: bold;" />
                     <button label="Welcome" onClick='loadContent("welcomepage.zul")' />
                     <button label="Registration Form" onClick='loadContent("registrationform.zul")' />
-                    <button label="Table" onClick='loadContent("data.zul")' />
+<!--                    <button label="Table" onClick='loadContent("data.zul")' />-->
                     <button label="Search" onClick='loadContent("playerSearch.zul")'/>
                     <button label="Term Of Use" onClick='loadContent("term.zul")' />
                     <button label="Help" onClick='loadContent("help.zul")' />

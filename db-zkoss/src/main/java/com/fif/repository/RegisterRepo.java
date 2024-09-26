@@ -18,8 +18,6 @@ public class RegisterRepo {
     public List<Registration> queryAll() {
         Query query = em.createQuery("SELECT l FROM Registration l");
         List<Registration> result = query.getResultList();
-        System.out.println("result");
-        System.out.println(result);
         return result;
     }
 
@@ -30,10 +28,6 @@ public class RegisterRepo {
     @Transactional(noRollbackFor = {})
     public Registration save(Registration registration) {
         System.out.println(registration.getId());
-        System.out.println(registration.getName());
-        System.out.println(registration.getGender());
-        System.out.println(registration.getBirthdate());
-        System.out.println(registration.getCountry());
         try {
             em.persist(registration);
             em.flush();
@@ -42,8 +36,6 @@ public class RegisterRepo {
         } finally {
             return registration;
         }
-
-
     }
 
     @Transactional
@@ -52,6 +44,21 @@ public class RegisterRepo {
         if(r != null) {
             em.remove(r);
         }
+    }
+
+    @Transactional
+    public Registration editRegis(Registration registration) {
+        System.out.println(registration.getId());
+        Registration selectedUser = get(registration.getId());
+        if(selectedUser != null) {
+            selectedUser.setName(registration.getName());
+            selectedUser.setGender(registration.getGender());
+            selectedUser.setBirthdate(registration.getBirthdate());
+            selectedUser.setCountry(registration.getCountry());
+            em.merge(selectedUser);
+        }
+
+        return selectedUser;
     }
 
 }
